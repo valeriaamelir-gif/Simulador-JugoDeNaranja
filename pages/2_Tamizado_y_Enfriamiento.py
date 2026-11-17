@@ -86,3 +86,23 @@ with g_col2:
     ax2.set_ylabel("°C")
     ax2.set_title("Perfil Térmico (Enfriamiento)")
     st.pyplot(fig2)
+# ==========================================
+# 5. ARTÍCULO TÉCNICO
+# ==========================================
+st.markdown("---")
+st.markdown("### 📄 Artículo Técnico del Proceso")
+
+import os
+ruta_pdf = "img/articulo.pdf"
+
+if os.path.exists(ruta_pdf):
+    with open(ruta_pdf, "rb") as f:
+        pdf_bytes = f.read()
+    st.download_button(
+        label="📥 Descargar Artículo Técnico (PDF)",
+        data=pdf_bytes,
+        file_name="Articulo_Tamizado_y_Enfriamiento.pdf",
+        mime="application/pdf"
+    )
+else:
+    st.info("💡 Sube tu archivo PDF a la carpeta `img/` con el nombre: `articulo.pdf` para habilitar el botón de descarga.")
